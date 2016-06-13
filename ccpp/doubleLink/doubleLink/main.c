@@ -10,138 +10,89 @@
 #include <stdlib.h>
 #include <string.h>
 
-typedef struct doubleLink
-{
+typedef struct doubleLink {
     char data[80];
     struct doubleLink *pre;
     struct doubleLink *next;
 }dnode;
 
 //建立链表
-dnode* createDLink()
-{
-    dnode *head,*p,*s;
-    char x[80];
+dnode* createDLink() {
+    dnode *head, *p, *s;
+    int i = 0;
     head = (dnode*)malloc(sizeof(dnode));
     p = head;
     char end[4] = "end";
-    while(1)
-    {
-        printf("please input the data: ");
-        scanf("%s",x);
-        if(strcmp(x,end) != 0)
-        {
-            s = (dnode*)malloc(sizeof(dnode));
-            strcpy(s -> data, x);
-            s-> pre = p;
-            p->next = s;
-            p=s;
-        }
-        else
-            break;
+    char input[5][80] = { "how are you?", "I am fine!", "and you?", "me too.", "thank you!" };
+    for (i = 0; i < 5; i++) {
+        s = (dnode*)malloc(sizeof(dnode));
+        strcpy(s->data, input[i]);
+        s->pre = p;
+        p->next = s;
+        p = s;
     }
     p->next = NULL;
-    head = head ->next;
+    head = head->next;
     head->pre = NULL;
     return head;
 }
 
 //顺序、反序打印链表
-void printDLink(dnode *head)
-{
-    dnode *p,*s;
+void printDLink(dnode *head) {
+    dnode *p, *s;
     p = head;
-    printf(" left to right: \n");
-    while(p)
-    {
-        printf("%s  ",p->data);
+    while (p) {
+        printf("%s  ", p->data);
         s = p;
         p = p->next;
-    }
-    printf("\n right to left: \n");
-    while(s)
-    {
-        printf("%s  ",s->data);
-        s = s->pre;
     }
     printf("\n \n");
 }
 
 //删除一个结点
-dnode* deletedNode(dnode *head,int i)
-{
+void deletedNode(dnode *head, char del[80]) {
     dnode *p;
     p = head;
-    if(p->data == i)
-    {
-        head = p->next;
-        head->pre = NULL;
-        free(p);
-        return head;
-    }
-    
-    while(p)
-    {
-        if(p->data == i)
-        {
+    while (p) {
+        if (strcmp(p->data, del) == 0) {
             p->pre->next = p->next;
             p->next->pre = p->pre;
             free(p);
-            return head;
+            return ;
         }
         p = p->next;
     }
     
     printf("data not found \n");
-    return head;
 }
 
 //插入一个结点
-dnode* insertdNode(dnode *head,char i[80])
-{
-    dnode *p,*temp;
+void insertdNode(dnode *head, char i[80], char pre[80]) {
+    dnode *p, *temp;
     p = head;
     
     temp = (dnode*)malloc(sizeof(dnode));
-    strcpy(temp ->data, i);
+    strcpy(temp->data, i);
     
-    if(i < p->data)
-    {
-        head = temp;
-        head->next = p;
-        head->pre = NULL;
-        p->pre = head;
-        return head;
-    }
-    
-    while(p != NULL && i > p->data)
-    {
+    while (p && strcmp(p->data, pre) != 0)
         p = p->next;
-    }
-    if(i < p->data)
-    {
-        temp ->next = p;
-        temp ->pre = p->pre;
-        p ->pre->next = temp;
-        p ->pre = temp;
-        return head;
-    }else
-    {
-        p->next = temp;
-        temp ->pre = p;
-        temp ->next = NULL;
-        return head;
-    }
+    
+    temp->next = p->next;
+    p->next->pre = temp;
+    p->next = temp;
+    temp->pre = p;
 }
 
 
-void main()
-{
+void main() {
     dnode *head;
     head = createDLink();
     printDLink(head);
     
-    head = insertdNode(head,"Thank you!");
-//    head = deletedNode(head,3);  
+    insertdNode(head, "Thank you!", "I am fine!");
     printDLink(head);
-}  
+    
+    deletedNode(head, "I am fine!");
+    printDLink(head);
+    getchar();
+}
