@@ -9,14 +9,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct Node Node;
+//typedef struct Node Node;
+typedef struct Node {
+    int num;
+    struct Node *next;
+}Node;
+
 typedef Node *ListH;
 typedef Node *Position;
 
-struct Node {
-    int num;
-    Node *next;
-};
+//struct Node {
+//    int num;
+//    Node *next;
+//};
+
 
 ListH creatList(ListH pHead);
 Position search(ListH pHead, int data);

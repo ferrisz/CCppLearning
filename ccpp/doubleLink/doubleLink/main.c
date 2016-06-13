@@ -16,13 +16,31 @@ typedef struct doubleLink {
     struct doubleLink *next;
 }dnode;
 
+dnode* createDLink();
+void printDLink(dnode *head);
+void deletedNode(dnode *head, char del[80]);
+void insertdNode(dnode *head, char i[80], char pre[80]);
+
+int main() {
+    dnode *head;
+    head = createDLink();
+    printDLink(head);
+    
+    insertdNode(head, "Thank you!", "I am fine!");
+    printDLink(head);
+    
+    deletedNode(head, "I am fine!");
+    printDLink(head);
+    getchar();
+    return 0;
+}
+
 //建立链表
 dnode* createDLink() {
     dnode *head, *p, *s;
     int i = 0;
     head = (dnode*)malloc(sizeof(dnode));
     p = head;
-    char end[4] = "end";
     char input[5][80] = { "how are you?", "I am fine!", "and you?", "me too.", "thank you!" };
     for (i = 0; i < 5; i++) {
         s = (dnode*)malloc(sizeof(dnode));
@@ -37,7 +55,7 @@ dnode* createDLink() {
     return head;
 }
 
-//顺序、反序打印链表
+//顺序打印链表
 void printDLink(dnode *head) {
     dnode *p, *s;
     p = head;
@@ -74,9 +92,9 @@ void insertdNode(dnode *head, char i[80], char pre[80]) {
     temp = (dnode*)malloc(sizeof(dnode));
     strcpy(temp->data, i);
     
-    while (p && strcmp(p->data, pre) != 0)
+    while (p && strcmp(p->data, pre) != 0){
         p = p->next;
-    
+    }
     temp->next = p->next;
     p->next->pre = temp;
     p->next = temp;
@@ -84,15 +102,4 @@ void insertdNode(dnode *head, char i[80], char pre[80]) {
 }
 
 
-void main() {
-    dnode *head;
-    head = createDLink();
-    printDLink(head);
-    
-    insertdNode(head, "Thank you!", "I am fine!");
-    printDLink(head);
-    
-    deletedNode(head, "I am fine!");
-    printDLink(head);
-    getchar();
-}
+
