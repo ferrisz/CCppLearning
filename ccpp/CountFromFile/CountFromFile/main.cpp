@@ -1,15 +1,15 @@
 //
-//  main.c
+//  main.cpp
 //  CountFromFile
 //
-//  Created by Ferris on 16/6/21.
+//  Created by Ferris on 16/6/24.
 //  Copyright © 2016年 Ferris. All rights reserved.
 //
 
-#include <stdio.h>
+#include <iostream>
 
 int main(int argc, const char * argv[]) {
     // insert code here...
-    printf("Hello, World!\n");
+    std::cout << "Hello, World!\n";
     return 0;
 }

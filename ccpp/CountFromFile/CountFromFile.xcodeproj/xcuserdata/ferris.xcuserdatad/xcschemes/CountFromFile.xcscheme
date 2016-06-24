@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "EDD760A91D19154900A0BDB7"
+               BlueprintIdentifier = "ED4EF1C51D1CD1140023051D"
                BuildableName = "CountFromFile"
                BlueprintName = "CountFromFile"
                ReferencedContainer = "container:CountFromFile.xcodeproj">
@@ -32,7 +32,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "EDD760A91D19154900A0BDB7"
+            BlueprintIdentifier = "ED4EF1C51D1CD1140023051D"
             BuildableName = "CountFromFile"
             BlueprintName = "CountFromFile"
             ReferencedContainer = "container:CountFromFile.xcodeproj">
@@ -55,7 +55,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "EDD760A91D19154900A0BDB7"
+            BlueprintIdentifier = "ED4EF1C51D1CD1140023051D"
             BuildableName = "CountFromFile"
             BlueprintName = "CountFromFile"
             ReferencedContainer = "container:CountFromFile.xcodeproj">
@@ -74,7 +74,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "EDD760A91D19154900A0BDB7"
+            BlueprintIdentifier = "ED4EF1C51D1CD1140023051D"
             BuildableName = "CountFromFile"
             BlueprintName = "CountFromFile"
             ReferencedContainer = "container:CountFromFile.xcodeproj">
